@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue事件函数写法</title>
+</head>
+<body>
+<div id="app">
+    <h3>my name is {{name}},my age is {{age}}</h3>
+    <input type="button" value="减一" @click="sub_age">
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            name:"jxj",
+            age:21,
+            password:"123456",
+        },
+        methods:{
+            sub_age(){
+                this.age--
+            }
+        },
+    })
+</script>
+
+</body>
+</html>

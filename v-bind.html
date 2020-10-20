@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+    <style>
+        .aa{
+            border: 3px red solid;
+        }
+    </style>
+</head>
+<body>
+<!--v-bind用来绑定标签的属性，从而可以通过vue的实例来动态的修改标签的属性-->
+<div id="app">
+    <img v-bind:src="src" v-bind:title="title" v-bind:class="{aa: showCss}">
+    <input type="button" value="更改图片" @click="changeImg">
+    <input type="button" value="改变图片的样式" @click="change">
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            src:"https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3469716026,2816395410&fm=26&gp=0.jpg",
+            title:"帅气的二哈",
+            showCss:true
+        },
+        methods:{
+            addCss(){
+                this.showCss=!this.showCss;
+            },
+            changeImg(){
+                this.src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2481540226,557581684&fm=115&gp=0.jpg"
+            },
+            change(){
+                this.showCss=!this.showCss;
+            }
+    }
+    })
+</script>
+
+</body>
+</html>

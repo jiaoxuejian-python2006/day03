@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--v-show用来控制标签是否展示 true false-->
+<div id="app">
+    <h3 v-show="true">{{message}}</h3>
+    <hr>
+    <h3 v-show="isShow">{{message}}1111</h3>
+    <hr>
+    <input type="button" value="是否展示" @click="showMsg">
+    <hr>
+    <h3>{{count}}</h3><br>
+    <h3 v-show="count>=30">数字＞＝30显示我</h3>
+    <input type="button" value="count+1" @click="add_count">
+    <input type="button" value="count-1" @click="sub_count">
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            isShow:true,
+            message:"我是焦雪健",
+            count:30,
+        },
+        methods:{
+            showMsg(){
+                this.isShow = !this.isShow
+            },
+            add_count(){
+                this.count++
+            },
+            sub_count(){
+                this.count--
+            },
+        }
+    })
+</script>
+</body>
+</html>

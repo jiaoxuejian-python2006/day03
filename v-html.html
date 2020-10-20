@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--用来获取data数据中的html标签，并将a标签作为链接显示-->
+<h3>v-html</h3>
+<div id="app">
+    {{message}}{{a}}
+    <hr>
+    <span v-html="a"></span>
+    <hr>
+    <span v-html="a">{{message}},456879</span>
+
+
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            message:"测试v-html",
+            a:"<a href='javascript:void(0)'>百度一下</a>",
+        },
+    })
+</script>
+</body>
+</html>

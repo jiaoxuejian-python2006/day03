@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">第一个vue程序:我是{{name}}，{{age}}岁</div>
+<script src="js/vue.js"></script>
+
+<script>
+    //创建第一个vue实例
+    new Vue({
+        el: "#app",  //定义vue的作用范围
+        data: {
+            //data中的变量可以随便定义
+            name:"焦雪健",
+            age:18,
+        },
+    })
+</script>
+
+</body>
+</html>

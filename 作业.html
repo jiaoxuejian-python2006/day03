@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作业</title>
+</head>
+<body>
+<div id="app">
+<input type="text"  v-model="msg">
+<input type="button" value="提交留言" @click="submit(msg)" >
+    <ul v-for="(a,index) in message" :key="index">
+        <li>{{a}}  <a href="javascript:void(0)" @click="remove(index)">删除</a></li>
+    </ul>
+
+<h3>一共有{{message.length}}条留言</h3>
+<h3 v-show="isShow"><input type="button" value="删除所有留言" @click="remove_all" ></h3>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            message:["哈哈哈","嘿嘿嘿"],
+            msg:"",
+            isShow:true
+        },
+        methods:{
+            submit(msg){
+                if (this.msg){
+                    this.message.push(msg);
+                    this.msg="";
+                    this.isShow=true
+                }else {
+                    alert("留言不能为空")
+                }
+
+            },
+            remove(index){
+                console.log(this.message.length);
+                this.message.splice(index,1);
+                if(this.message.length===0){
+                    this.isShow=false
+                }
+
+
+            },
+            remove_all(){
+                this.message=[];
+                this.isShow=false;
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
