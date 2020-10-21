@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props属性</title>
+    <style>
+        .red{
+            color: red;
+        }
+        .green{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <com css="red" user="tom"></com>
+    <com css="green" user="jxj"></com>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let com = {
+        template:`
+            <div>
+                <div :class="css">组件中不能有同级标签</div>
+            </div>
+        `,
+        props:["css","user"],
+        created:function (){
+            console.log(this.user)
+        }
+    }
+
+    new Vue({
+        el:"#app",
+        data:{},
+        components:{
+            "com":com,
+        }
+    })
+</script>
+</body>
+</html>

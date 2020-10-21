@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子传父</title>
+</head>
+<body>
+<h3>子传父是通过this.$emit("自定义事件","要传递的参数")来向父组件传递参数</h3>
+<div id="app">
+    这是父组件中的username:{{username}}
+    <hr>
+
+    <com @btn="clickMe"></com>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    let com={
+        template:`
+            <div>咱是子组件
+            <button @click="clickBtn">按钮</button>
+            </div>
+        `,
+        methods:{
+            //在子组件触发的函数内部提交一个自定义事件 且这个事件要包含传递的参数
+          clickBtn(){
+              this.$emit("btn","百知教育")
+          },
+        },
+    }
+    new Vue({
+        el:"#app",
+        data:{
+            username:"jxj"
+        },
+        methods: {
+            clickMe(username) {
+                this.username=username
+            }
+        },
+        components:{
+            com:com,
+        }
+    })
+</script>
+</body>
+</html>

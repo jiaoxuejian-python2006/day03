@@ -15,7 +15,7 @@
 <h3>一共有{{message.length}}条留言</h3>
 <h3 v-show="isShow"><input type="button" value="删除所有留言" @click="remove_all" ></h3>
 </div>
-<script src="js/vue.js"></script>
+<script src="../js/vue.js"></script>
 <script>
     new Vue({
         el:"#app",
@@ -41,7 +41,6 @@
                 if(this.message.length===0){
                     this.isShow=false
                 }
-
 
             },
             remove_all(){

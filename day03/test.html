@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red{
+            color: red;
+        }
+        .green{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div @click="change" :class="{red:isShow}" id="app">my name is jxj
+
+    <app :test="username"></app>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let app ={
+        template:`
+            <div>这是子组件传递的数据{{test}}</div>
+        `,
+        props:['test']
+    }
+    new Vue({
+        el:"#app",
+        data:{
+            isShow:true,
+            username:"aaa"
+        },
+        methods:{
+            change(){
+                this.isShow=!this.isShow
+            }
+        },
+        components:{
+            app:app
+        }
+    })
+</script>
+</body>
+</html>

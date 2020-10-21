@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <first></first>
+    <h3>全局组件除了data与vue实例中的data不同，在其他方面没有区别
+        data:function(){
+        return{属性名:"属性值"}
+        }
+    </h3>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    let first={
+        template:`
+        <div>
+        this is my second zujian
+        <br >
+        <span @click="change">这是组件的span，{{username}}</span>
+</div>
+        `,
+        data: function (){
+            return{username:"jxj",}
+        },
+        methods:{
+            change(){
+                alert("我是组件函数")
+            },
+        }
+    }
+    Vue.component("first",first)
+
+    new Vue({
+        el:"#app",
+        data:{
+
+        },
+    })
+</script>
+</body>
+</html>

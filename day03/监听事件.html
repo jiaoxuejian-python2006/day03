@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--多个变量依赖于一个属性，则可以使用watch来监听这个属性的变化-->
+<div id="app">
+    <p @click="sub_sum">{{num}}</p>
+    <p>十位:{{shi}}</p>
+    <p>个位:{{ge}}</p>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            num:99,
+            shi:"",
+            ge:"",
+        },
+        methods:{
+            sub_sum(){
+                this.num--
+            }
+        },
+        //监听属性监听的是data中已经存在的变量的变化，监听的值一旦发生变化，则促发监听事件
+        //监听事件不需要返回值
+        watch:{
+            num(){
+                console.log("我改变了")
+                this.shi = parseInt(this.num/10);
+                this.ge = (this.num%10)
+            }
+        }
+    })
+</script>
+</body>
+</html>

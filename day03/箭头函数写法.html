@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 正常函数
+    function add(a, b) {
+        console.log(a + b)
+    }
+
+    add(2, 3)
+    //匿名函数
+    let a = function (a,b){
+        console.log(a*b)
+    }
+    a(5,5)
+    // 箭头函数是对匿名函数的简写
+    let app = (a,b,c) => console.log(a+b+c)
+    app(4,5,6)
+    let app1 = (a,b,c) => {console.log(a*b*c)}
+    app1(5,5,5)
+    let app2=(a) => console.log(a*a)
+    app2(8)
+</script>
+</body>
+</html>
