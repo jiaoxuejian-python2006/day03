@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>路由参数的传递</title>
+<!--    通过<router-link to="路径">在路径后用?拼接的形式传递参数-->
+<!--    在拼接传参的形式需要在对应的组件内通过{{$route.query.参数名}}来取值-->
+</head>
+<body>
+
+<div id="app">
+    <h3>咱是来测试参数传递的</h3>
+    <hr>
+<!--    <route-link to="/first">查看组件一</route-link>-->
+<!--    <router-link to="/second">查看组件二</router-link>-->
+    <hr>
+    <router-view></router-view>
+</div>
+
+<script src="../js/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    let first = {
+        template:`
+            <div>
+            咱是组件一
+            <router-link to="/second?id=3&name=jxj">查看组件2的这一页</router-link>
+</div>
+        `,
+        data(){
+            return{user:"hhh"}
+        },
+    }
+    let second = {
+        template:`
+            <div>咱是组件二，需要接受组件一传来的参数id：{{$route.query.id}}
+            <br>
+            这是传过来的name：{{$route.query.name}}
+            <br>
+            <router-link to="/first">回到组件一</router-link>
+            </div>
+        `,
+    }
+    let myRouter = new VueRouter({
+        routes:[
+            {path:"/first",component:first},
+            {path:"/second",component:second},
+            {path:"/",redirect:"/first"},
+            ]
+    })
+
+    new Vue({
+        el:"#app",
+        data:{
+
+        },
+        router:myRouter,
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h3>我是主页</h3>
+    <hr>
+    <router-link to="/first">访问系统首页</router-link>
+    <router-link to="/second">访问用户页</router-link>
+    <h3><router-view></router-view></h3>
+</div>
+
+<script src="../js/vue.js"></script>
+<!--必须导入vue.js-->
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    let first={
+        template:`
+            <div>咱是系统页</div>
+        `,
+    }
+    let second={
+        template: `
+            <div>咱是用户页</div>
+        `,
+    }
+    //为每个组件准备对应的路由 定义组件与路由的映射关系
+    //1.需要为每个组件通过一一对应的方式来建立路由映射 let myRouter = new VueRouter（{}）
+    //2.需要将定义好的路由映射注入到vue实例中 router：变量名
+    //3.需要在指定的位置使用 router-view标签来选择组件展示的位置
+    //4.通过router-link来发起访问不同组件的路由
+
+    let myRouter = new VueRouter({
+        routes:[
+            {path:"/first",component:first},
+            {path:"/second",component:second},
+        ]
+    })
+
+    new Vue({
+        el:"#app",
+        data:{},
+        // 注入定义好的vue路由 通过router配置参数注入，从而整个vue实例都拥有路由功能
+        router:myRouter
+    })
+
+
+</script>
+
+</body>
+</html>
